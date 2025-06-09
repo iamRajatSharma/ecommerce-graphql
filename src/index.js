@@ -1,8 +1,9 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
-import conn from "./lib/database.js";
 import CategorySchema from "./graphql/category/queries.js";
 import CategoryResolvers from "./graphql/category/resolvers.js";
+
+import conn from "./lib/database.js";
 
 async function startApolloServer() {
     const server = new ApolloServer({
@@ -11,13 +12,13 @@ async function startApolloServer() {
     })
 
     await startStandaloneServer(server, {
-        listen: { port: 3000, path: "/graphql" }
+        listen: { port: process.env.PORT, path: `/${process.env.END_POINT}` }
     })
 }
 
 startApolloServer()
     .then((success) => {
-        console.log('Sever started')
+        console.log(`Sever started on http://localhost:${process.env.PORT}/${process.env.END_POINT}`)
     })
     .catch((err) => {
         console.log(err)

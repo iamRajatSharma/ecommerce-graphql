@@ -1,12 +1,15 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv"
 
-const conn = mongoose.connect("mongodb+srv://rajat:12345@cluster0.6wrjo.mongodb.net/ecommerce-graphql?retryWrites=true&w=majority&appName=cluster0")
+dotenv.config()
+const conn = mongoose.connect(process.env.DB_URL)
 
 conn
     .then((success) => {
         console.log('DB Connected')
     })
     .catch((err) => {
+        console.log(err)
         console.log('DB Error')
     })
 
