@@ -4,11 +4,13 @@ import CategorySchema from "./graphql/category/queries.js";
 import CategoryResolvers from "./graphql/category/resolvers.js";
 
 import conn from "./lib/database.js";
+import ProductSchema from "./graphql/product/queries.js";
+import ProductResolvers from "./graphql/product/resolvers.js";
 
 async function startApolloServer() {
     const server = new ApolloServer({
-        typeDefs: CategorySchema,
-        resolvers: CategoryResolvers
+        typeDefs: ProductSchema,
+        resolvers: ProductResolvers
     })
 
     await startStandaloneServer(server, {
