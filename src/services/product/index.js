@@ -14,8 +14,14 @@ class ProductService {
         return true
     }
 
-    static async createProduct(name, price, descrption, availability) {
-        return await ProductModel.create({ name, price, descrption, availability })
+    static async createProduct(name, price, descrption, availability, category) {
+        console.log(category)
+        try {
+            return await ProductModel.create({ name, price, descrption, availability, category })
+        }
+        catch (err) {
+            return err;
+        }
     }
 
 }

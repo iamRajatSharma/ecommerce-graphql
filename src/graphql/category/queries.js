@@ -10,8 +10,8 @@ const CategorySchema = `#graphql
     }
 
     type Mutation{
-        deleteCategory(id: ID!): Boolean!
-        addCategory(name: String): Category
+        deleteCategory(id: ID!): Category!
+        addCategory(name: String): Category!
     }
 `
 export default CategorySchema

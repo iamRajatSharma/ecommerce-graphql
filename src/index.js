@@ -2,9 +2,6 @@ import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
 import conn from "./lib/database.js";
-import ProductSchema from "./graphql/product/queries.js";
-import ProductResolvers from "./graphql/product/resolvers.js";
-
 import schema from "./graphql/index.js"
 
 async function startApolloServer() {

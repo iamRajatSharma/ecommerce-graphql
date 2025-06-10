@@ -6,17 +6,31 @@ class CategoryService {
     }
 
     static async getCategoryById(id) {
-        return await CategoryModel.findById(id)
+        try {
+            return await CategoryModel.findById({ _id: id })
+        }
+        catch (error) {
+            return error
+        }
     }
 
     static async deleteCategory(id) {
-        const res =  await CategoryModel.deleteOne({ id })
-        console.log(res)
-        return true
+        try {
+            const res = await CategoryModel.findByIdAndDelete({ _id: id })
+            return res
+        }
+        catch (err) {
+            return err
+        }
     }
 
     static async createCategory(name) {
-        return await CategoryModel.create({ name: name })
+        try {
+            return await CategoryModel.create({ name: name })
+        }
+        catch (err) {
+            return err
+        }
     }
 
 }

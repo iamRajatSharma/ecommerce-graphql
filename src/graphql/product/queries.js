@@ -4,7 +4,8 @@ const ProductSchema = `#graphql
         name: String!
         price: String!
         descrption: String!
-        availability: Boolean!
+        availability: Boolean
+        category: String!
     }
 
     type Query{
@@ -14,7 +15,7 @@ const ProductSchema = `#graphql
 
     type Mutation{
         deleteProduct(id: ID!): Boolean!
-        addProduct(name: String, price: Int, descrption: String, availability: Boolean): Product
+        addProduct(name: String, price: Int, descrption: String, availability: Boolean, category: String): Product!
     }
 `
 export default ProductSchema
