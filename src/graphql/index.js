@@ -1,21 +1,31 @@
 import { mergeTypeDefs } from '@graphql-tools/merge';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 
+//category section
 import CategorySchema from "./category/queries.js"
 import CategoryResolvers from "./category/resolvers.js"
 
+
+// product section
 import ProductSchema from "./product/queries.js"
 import ProductResolvers from "./product/resolvers.js"
 
-const typeDefs = mergeTypeDefs([CategorySchema, ProductSchema])
+
+//user section
+import UserSchema from './user/queries.js';
+import UserResolvers from './user/resolvers.js';
+
+const typeDefs = mergeTypeDefs([CategorySchema, ProductSchema, UserSchema])
 const resolvers = {
     Query: {
         ...CategoryResolvers.Query,
-        ...ProductResolvers.Query
+        ...ProductResolvers.Query,
+        ...UserResolvers.Query
     },
     Mutation: {
         ...CategoryResolvers.Mutation,
-        ...ProductResolvers.Mutation
+        ...ProductResolvers.Mutation,
+        ...UserResolvers.Mutation
     }
 }
 
