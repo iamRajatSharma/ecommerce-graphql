@@ -16,6 +16,9 @@ const CategoryResolvers = {
         },
         addCategory: async (_, { name }) => {
             return await CategoryService.createCategory(name)
+        },
+        updateCategory: async (_, { id, name }) => {
+            return await CategoryService.updateCategory(id, name)
         }
     }
 }

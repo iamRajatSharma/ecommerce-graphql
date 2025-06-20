@@ -33,6 +33,22 @@ class CategoryService {
         }
     }
 
+    static async updateCategory(id, name) {
+        try {
+            const cat = await CategoryModel.findById(id)
+            if (!cat) {
+                return "No category Found"
+            }
+
+            cat.name = name
+            await cat.save();
+            return "Category Updated successfully"
+        }
+        catch (err) {
+            returnerr
+        }
+    }
+
 }
 
 

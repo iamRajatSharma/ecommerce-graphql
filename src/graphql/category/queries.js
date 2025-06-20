@@ -12,6 +12,7 @@ const CategorySchema = `#graphql
     type Mutation{
         deleteCategory(id: ID!): Category!
         addCategory(name: String): Category!
+        updateCategory(id: ID!, name: String!): String!
     }
 `
 export default CategorySchema
