@@ -15,17 +15,24 @@ import ProductResolvers from "./product/resolvers.js"
 import UserSchema from './user/queries.js';
 import UserResolvers from './user/resolvers.js';
 
-const typeDefs = mergeTypeDefs([CategorySchema, ProductSchema, UserSchema])
+
+//cart section
+import CartSchame from './cart/queries.js';
+import CartResolvers from './cart/resolvers.js';
+
+const typeDefs = mergeTypeDefs([CategorySchema, ProductSchema, UserSchema, CartSchame])
 const resolvers = {
     Query: {
         ...CategoryResolvers.Query,
         ...ProductResolvers.Query,
-        ...UserResolvers.Query
+        ...UserResolvers.Query,
+        ...CartResolvers.Query
     },
     Mutation: {
         ...CategoryResolvers.Mutation,
         ...ProductResolvers.Mutation,
-        ...UserResolvers.Mutation
+        ...UserResolvers.Mutation,
+        ...CartResolvers.Mutation
     }
 }
 
