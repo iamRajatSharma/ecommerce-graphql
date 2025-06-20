@@ -1,17 +1,28 @@
 import { hashedPassword, comparePassword, generateToken } from "../../lib/incryption.js"
 import UserModel from "../../schema/User.js"
 class UserService {
+
     static async getAllUsers() {
         return await UserModel.find()
     }
 
     static async getUserById(id) {
-        return await UserModel.findById({ _id: id })
+        try {
+            return await UserModel.findById({ _id: id })
+        }
+        catch (err) {
+            return err
+        }
     }
 
     static async deleteUser(id) {
-        const res = await UserModel.deleteOne({ _id: id })
-        return true
+        try {
+            const res = await UserModel.deleteOne({ _id: id })
+            return "User deleted successfully"
+        }
+        catch (err) {
+            return err
+        }
     }
 
     static async createUser(name, email, password, role) {
@@ -37,7 +48,7 @@ class UserService {
                 return "User credenitals not matched"
             }
             console.log(user)
-            const token = generateToken(user._id)
+            const token = generateToken(user)
             return { user, token: token }
         }
         catch (err) {

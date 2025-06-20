@@ -8,16 +8,13 @@ const UserResolvers = {
         user: async (_, { id }) => {
             return await UserService.getUserById(id)
         },
-        login: async (_, { email, password }) => {
-            return await UserService.loginUser(email, password)
-        }
     },
     Mutation: {
-        deleteUser: async (_, { id }) => {
-            return await UserService.deleteUser(id)
-        },
         addUser: async (_, { name, email, password, role }) => {
             return await UserService.createUser(name, email, password, role)
+        },
+        deleteUser: async (_, { id }) => {
+            return await UserService.deleteUser(id)
         }
     }
 }
