@@ -15,6 +15,9 @@ const UserResolvers = {
         },
         deleteUser: async (_, { id }) => {
             return await UserService.deleteUser(id)
+        },
+        login: async (_, { email, password }) => {
+            return await UserService.loginUser(email, password)
         }
     }
 }

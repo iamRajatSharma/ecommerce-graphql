@@ -7,15 +7,20 @@ const UserSchema = `#graphql
         role: String!
     }
 
+    type LoginOutput{
+        token: String!
+        user: User!
+    }
+
     type Query{
         users: [User!]!
         user(id: ID!): User
-        # login(email: String, password: String): User!
     }
 
     type Mutation{
         addUser(name: String, email: String, password: String, role: String): User!
         deleteUser(id: ID!): String!
+        login(email: String, password: String): LoginOutput!
     }
 `
 export default UserSchema
