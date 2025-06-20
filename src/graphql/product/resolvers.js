@@ -15,6 +15,9 @@ const ProductResolvers = {
         },
         addProduct: async (_, { name, price, descrption, availability, category }) => {
             return await ProductService.createProduct(name, price, descrption, availability, category)
+        },
+        updateProduct: async (_, { id, name, price, descrption, availability, category }) => {
+            return await ProductService.updateProduct(id, name, price, descrption, availability, category)
         }
     }
 }

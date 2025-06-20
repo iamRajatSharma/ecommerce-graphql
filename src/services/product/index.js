@@ -6,18 +6,38 @@ class ProductService {
     }
 
     static async getProductById(id) {
-        return await ProductModel.findById({ _id: id })
+        try {
+            return await ProductModel.findById({ _id: id })
+        }
+        catch (err) {
+            return err
+        }
     }
 
     static async deleteProduct(id) {
-        const res = await ProductModel.deleteOne({ _id: id })
-        return true
+        try {
+            const res = await ProductModel.findOneAndDelete({ _id: id })
+            return "Product deleted successfully"
+        }
+        catch (err) {
+            return err
+        }
     }
 
     static async createProduct(name, price, descrption, availability, category) {
-        console.log(category)
         try {
             return await ProductModel.create({ name, price, descrption, availability, category })
+        }
+        catch (err) {
+            return err;
+        }
+    }
+
+    static async updateProduct(id, name, price, descrption, availability, category) {
+        try {
+            const result = await ProductModel.updateOne({ _id: id }, { name, price, descrption, availability, category })
+            console.log(result)
+            return "Product details updated"
         }
         catch (err) {
             return err;
